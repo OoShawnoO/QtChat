@@ -1,6 +1,7 @@
 #ifndef LOGIN_H
 #define LOGIN_H
 
+#include <QMessageBox>
 #include <QDialog>
 #include <client.h>
 using namespace std;

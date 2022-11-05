@@ -3,6 +3,8 @@
 
 #include "login.h"
 #include <QMainWindow>
+#include <QListWidgetItem>
+#include <QDebug>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }

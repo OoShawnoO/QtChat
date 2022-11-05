@@ -128,25 +128,27 @@ bool client::readmsg(){
 void client::READ(client& clt){
     while(1){
         if(clt.connected != true) continue;
-        clt.readmsg();
-        TYPE types = clt.get_pack().get_type();
-        if(types == MSG){
-            Pack reply(clt.get_pack());
-            reply.get_to() = reply.get_from();
-            reply.get_content() = "ok";
-            reply.get_size() = sizeof(reply.get_content());
-            clt.message(reply.get_to(),reply.get_content(),ACK);
-        }
-        else if(types == ACK){
-            clt.get_done() = true;
-        }
-        else if(types == GETONLINE){
-            split(clt.get_pack().get_content(),'\\',clt.onlines);
-        }else if(types == ERR){
-            clt.err_content = clt.get_pack().get_content();
-            clt.err = true;
-        }else if(types == LOGIN){
-            clt.logined = true;
+        if(clt.readmsg()){
+            TYPE types = clt.get_pack().get_type();
+            if(types == MSG){
+                Pack reply(clt.get_pack());
+                reply.get_to() = reply.get_from();
+                reply.get_content() = "ok";
+                reply.get_size() = sizeof(reply.get_content());
+                clt.message(reply.get_to(),reply.get_content(),ACK);
+            }
+            else if(types == ACK){
+                clt.get_done() = true;
+            }
+            else if(types == GETONLINE){
+                clt.onlines.clear();
+                split(clt.get_pack().get_content(),'\\',clt.onlines);
+            }else if(types == ERR){
+                clt.err_content = clt.get_pack().get_content();
+                clt.err = true;
+            }else if(types == LOGIN){
+                clt.logined = true;
+            }
         }
     }
 }

@@ -38,7 +38,7 @@ background-color:rgb(255,255,255);
        </widget>
       </item>
       <item>
-       <widget class="QListView" name="online">
+       <widget class="QListWidget" name="online">
         <property name="styleSheet">
          <string notr="true">background-color:rgb(230,230,230);
 border:1px solid rgb(220,220,220);</string>
@@ -48,7 +48,7 @@ border:1px solid rgb(220,220,220);</string>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,2,1">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,1">
       <item alignment="Qt::AlignLeft">
        <widget class="QLabel" name="label">
         <property name="font">
@@ -69,7 +69,7 @@ margin-bottom:5px;</string>
        </widget>
       </item>
       <item>
-       <widget class="QListView" name="listView">
+       <widget class="QListWidget" name="listWidget">
         <property name="styleSheet">
          <string notr="true">border: 1px solid rgb(220,220,220);</string>
         </property>
@@ -159,7 +159,7 @@ margin-bottom:5px;</string>
      <normaloff>:/res/login.png</normaloff>:/res/login.png</iconset>
    </property>
    <property name="text">
-    <string>登录</string>
+    <string>login</string>
    </property>
   </action>
   <action name="quit">
@@ -168,7 +168,7 @@ margin-bottom:5px;</string>
      <normaloff>:/res/quit.png</normaloff>:/res/quit.png</iconset>
    </property>
    <property name="text">
-    <string>登出</string>
+    <string>quit</string>
    </property>
   </action>
   <action name="list">
@@ -177,7 +177,7 @@ margin-bottom:5px;</string>
      <normaloff>:/res/listuser.png</normaloff>:/res/listuser.png</iconset>
    </property>
    <property name="text">
-    <string>用户列表</string>
+    <string>list</string>
    </property>
   </action>
  </widget>

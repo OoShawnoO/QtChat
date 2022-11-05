@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(log,&login::success,this,[=](){
         log->hide();
         cli = log->get_client();
+        cli->getonline();
         this->show();
     });
     connect(log,&login::cancel,this,[=](){
@@ -30,9 +31,15 @@ MainWindow::MainWindow(QWidget *parent)
         if(action->text() == "login"){
 
         }else if(action->text() == "list"){
-            cli->get_onlines();
-            for(auto i:cli->get_onlines()){
-
+            if(cli->getonline()){
+                ui->online->clear();
+                for(auto i:cli->get_onlines()){
+                    if(i == ""){continue;}
+                    auto listitem = new QListWidgetItem(i.c_str(),ui->online);
+                }
+            }
+            else{
+                QMessageBox::critical(this,"Error","Get Online List failed.");
             }
         }else if(action->text() == "quit"){
 
