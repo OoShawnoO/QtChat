@@ -1,5 +1,5 @@
 #include "client.h"
-
+#include <QDebug>
 const char* address = "127.0.0.1";
 const short port = 9999;
 using namespace std;
@@ -15,11 +15,12 @@ void split(const string& str,char splitchar,vector<string>& res){
     }
 }
 
-client::client(string _name,string _password):
-name(_name),password(_password),pack(Pack(STANDARD,name,"Server",password,LOGIN))
+client::client(string _name,string _password,QObject* parent):
+QObject(parent),name(_name),password(_password),pack(Pack(STANDARD,name,"Server",password,LOGIN))
 {
     logined = false;
-    t = new thread(READ,ref(*this));
+    t = new std::thread(READ,ref(*this));
+    t->detach();
     fd = -1;
     cur_to = "";
     bzero(buffer,sizeof(buffer));
@@ -131,6 +132,8 @@ void client::READ(client& clt){
         if(clt.readmsg()){
             TYPE types = clt.get_pack().get_type();
             if(types == MSG){
+                clt.queue.push_back(clt.get_pack());
+                clt.notice();
                 Pack reply(clt.get_pack());
                 reply.get_to() = reply.get_from();
                 reply.get_content() = "ok";
@@ -189,4 +192,12 @@ vector<string>& client::get_onlines(){
 
 string& client::get_cur_to(){
     return cur_to;
+}
+
+deque<Pack>& client::get_queue(){
+    return queue;
+}
+
+void client::notice(){
+    emit msg();
 }

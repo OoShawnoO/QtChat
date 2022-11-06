@@ -11,10 +11,13 @@
 #include "pack.h"
 #include <memory.h>
 #include <thread>
+#include <deque>
+#include <QObject>
 
-class client{
+class client:public QObject{
+    Q_OBJECT
 public:
-    client(string _name,string _password);
+    client(string _name,string _password,QObject* parent=0);
     ~client();
     bool connect();
     bool login();
@@ -30,6 +33,8 @@ public:
     string& get_err_content();
     vector<string>& get_onlines();
     string& get_cur_to();
+    void notice();
+    deque<Pack>& get_queue();
     static void READ(client&);
 private:
     int fd;
@@ -43,8 +48,11 @@ private:
     bool err;
     string err_content;
     bool connected;
-    thread* t;
+    std::thread* t;
     string cur_to;
+    deque<Pack> queue;
+signals:
+    void msg();
 };
 
 

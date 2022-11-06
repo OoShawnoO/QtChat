@@ -48,8 +48,8 @@ border:1px solid rgb(220,220,220);</string>
      </layout>
     </item>
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,1">
-      <item alignment="Qt::AlignLeft">
+     <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,4,2">
+      <item alignment="Qt::AlignHCenter">
        <widget class="QLabel" name="label">
         <property name="font">
          <font>
@@ -64,12 +64,12 @@ border:1px solid rgb(220,220,220);</string>
 margin-bottom:5px;</string>
         </property>
         <property name="text">
-         <string>TextLabel</string>
+         <string>？</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QListWidget" name="listWidget">
+       <widget class="QListWidget" name="message">
         <property name="styleSheet">
          <string notr="true">border: 1px solid rgb(220,220,220);</string>
         </property>

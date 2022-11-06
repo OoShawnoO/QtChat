@@ -32,6 +32,8 @@ login::login(QWidget *parent) :
 
 login::~login()
 {
+    ui->loginin->disconnect();
+    ui->cancel->disconnect();
     delete cli;
     delete ui;
 }
