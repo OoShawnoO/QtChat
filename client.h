@@ -36,6 +36,7 @@ public:
     void notice();
     deque<Pack>& get_queue();
     static void READ(client&);
+    static void split(const string& str,char splitchar,vector<string>& res);
 private:
     int fd;
     string name;

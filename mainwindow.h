@@ -4,11 +4,12 @@
 #include <string>
 #include <unordered_map>
 #include <vector>
-#include "login.h"
 #include <QMainWindow>
 #include <QListWidgetItem>
 #include <QDateTime>
 #include <QDebug>
+#include <QTimer>
+#include "login.h"
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -22,6 +23,12 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    void onlines();
+    void changeDialog(QListWidgetItem*);
+    void loginSuccess();
+    void send();
+    void toolbars(QAction*);
+
 
 private:
     unordered_map<string,vector<string>> messagebox;

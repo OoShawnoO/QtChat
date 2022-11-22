@@ -71,7 +71,10 @@ margin-bottom:5px;</string>
       <item>
        <widget class="QListWidget" name="message">
         <property name="styleSheet">
-         <string notr="true">border: 1px solid rgb(220,220,220);</string>
+         <string notr="true">border: 1px solid rgb(220,220,220);
+QListWidgetItem{
+	padding-top:10px;
+}</string>
         </property>
        </widget>
       </item>
@@ -108,8 +111,14 @@ margin-bottom:5px;</string>
           </item>
           <item>
            <widget class="QPushButton" name="send">
+            <property name="tabletTracking">
+             <bool>false</bool>
+            </property>
             <property name="text">
              <string>发送</string>
+            </property>
+            <property name="shortcut">
+             <string>Return</string>
             </property>
            </widget>
           </item>

@@ -4,7 +4,7 @@ const char* address = "127.0.0.1";
 const short port = 9999;
 using namespace std;
 
-void split(const string& str,char splitchar,vector<string>& res){
+void client::split(const string& str,char splitchar,vector<string>& res){
     string strs = str + splitchar;
     int pos = strs.find(splitchar);
     while(pos != string::npos){
@@ -56,7 +56,7 @@ bool client::login(){
         perror("login write");
         return false;
     }
-    sleep(1);
+    usleep(5000);
     if(logined != true) return false;
     return true;
 }

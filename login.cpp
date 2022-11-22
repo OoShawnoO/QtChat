@@ -16,7 +16,7 @@ login::login(QWidget *parent) :
        cli->get_name() = ui->username->text().toStdString();
        cli->get_password() = ui->password->text().toStdString();
        if(!cli->connect()){
-            QMessageBox::critical(this,"Error","Connect Failed");
+            QMessageBox::critical(this,"Error","Connect Failed,Maybe Server Not working.");
        }else{
            if(!cli->login()){
                 QMessageBox::critical(this,"Error",cli->get_err_content().c_str());
